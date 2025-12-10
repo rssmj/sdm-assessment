@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Reliability Management System - Machines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top-bar">
+      <div class="top-left">
+        <div class="logo">
+          <span class="logo-mark">SD</span>
+        </div>
+        <div class="product-text">
+          <div class="company-name">SOUTHERN DESIGN</div>
+          <div class="product-name">Reliability Management System</div>
+        </div>
+      </div>
+      <div class="top-header-right">
+        <div class="top-actions">
+          <div class="user-pill">
+            <span class="user-name">Michael Ross</span>
+            <span class="user-initials">MR</span>
+          </div>
+          <button class="icon-button" aria-label="Analytics">📈</button>
+          <button class="icon-button" aria-label="Settings">⚙️</button>
+          <button class="icon-button" aria-label="Authentication Keys">
+            🗝️
+          </button>
+          <button class="icon-button" aria-label="Sign Out">➡️</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="primary-nav">
+      <button class="nav-item is-active">ATTRIBUTES</button>
+      <button class="nav-item">ATTRIBUTE GROUPS</button>
+      <button class="nav-item">MACHINE DATA SHEETS</button>
+      <button class="nav-item is-selected-tab">MACHINES</button>
+      <button class="nav-item">EVENTS</button>
+    </nav>
+
+    <main class="page">
+      <section class="toolbar-row toolbar-row-buttons">
+        <div class="toolbar-left">
+          <button class="btn btn-primary" id="btnSave">
+            💾 <span>Save</span>
+          </button>
+          <button class="btn btn-secondary" id="btnNew">
+            ⊕ <span>New</span>
+          </button>
+          <button class="btn btn-disabled" id="btnDelete" disabled>
+            ✖ <span>Delete</span>
+          </button>
+          <button class="btn btn-secondary" id="btnCancel">
+            ⟳ <span>Cancel</span>
+          </button>
+        </div>
+      </section>
+      <section class="toolbar-row toolbar-row-filters">
+        <div class="toolbar-right">
+          <div class="multi-dropdown" data-name="sheetType">
+            <button
+              type="button"
+              class="multi-dropdown-toggle"
+              data-placeholder="Mag-Drive Centrifugal Pump Data Sheet"
+            >
+              Mag-Drive Centrifugal Pump Data Sheet
+            </button>
+            <div class="multi-dropdown-menu">
+              <label
+                ><input
+                  type="checkbox"
+                  value="Mag-Drive Centrifugal Pump Data Sheet"
+                  checked
+                />
+                Mag-Drive Centrifugal Pump Data Sheet</label
+              >
+              <label
+                ><input type="checkbox" value="Standard Pump Data Sheet" />
+                Standard Pump Data Sheet</label
+              >
+              <label
+                ><input type="checkbox" value="Custom Template" /> Custom
+                Template</label
+              >
+            </div>
+            <input
+              type="hidden"
+              name="sheetType"
+              value="Mag-Drive Centrifugal Pump Data Sheet"
+            />
+          </div>
+
+          <div class="multi-dropdown" data-name="company">
+            <button
+              type="button"
+              class="multi-dropdown-toggle"
+              data-placeholder="-- Select a Company --"
+            >
+              -- Select a Company --
+            </button>
+            <div class="multi-dropdown-menu">
+              <label
+                ><input type="checkbox" value="Acme Corp" /> Acme Corp</label
+              >
+              <label
+                ><input type="checkbox" value="Southern Design" /> Southern
+                Design</label
+              >
+              <label
+                ><input type="checkbox" value="Global Manufacturing" /> Global
+                Manufacturing</label
+              >
+            </div>
+            <input type="hidden" name="company" />
+          </div>
+
+          <div class="multi-dropdown" data-name="location">
+            <button
+              type="button"
+              class="multi-dropdown-toggle"
+              data-placeholder="-- Select a Location --"
+            >
+              -- Select a Location --
+            </button>
+            <div class="multi-dropdown-menu">
+              <label><input type="checkbox" value="Plant A" /> Plant A</label>
+              <label><input type="checkbox" value="Plant B" /> Plant B</label>
+              <label><input type="checkbox" value="Field" /> Field</label>
+            </div>
+            <input type="hidden" name="location" />
+          </div>
+
+          <div class="multi-dropdown" data-name="layout">
+            <button
+              type="button"
+              class="multi-dropdown-toggle"
+              data-placeholder="4 Per Row"
+            >
+              4 Per Row
+            </button>
+            <div class="multi-dropdown-menu">
+              <label
+                ><input type="checkbox" value="2 Per Row" /> 2 Per Row</label
+              >
+              <label
+                ><input type="checkbox" value="3 Per Row" /> 3 Per Row</label
+              >
+              <label
+                ><input type="checkbox" value="4 Per Row" checked /> 4 Per
+                Row</label
+              >
+            </div>
+            <input type="hidden" name="layout" value="4 Per Row" />
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <header
+          class="card-header collapsible-header"
+          data-target="#applicationSection"
+        >
+          <span class="card-title">
+            Application Information | Equipment identification and type (e.g.
+            P-856, mag-drive centrifugal pump)
+          </span>
+          <button
+            type="button"
+            class="collapse-icon"
+            aria-label="Toggle Application Information"
+          >
+            ▾
+          </button>
+        </header>
+        <div class="card-body" id="applicationSection">
+          <div class="form-grid form-grid-4">
+            <div class="field">
+              <label for="equipmentId">
+                Equipment ID <span class="required">*</span>
+              </label>
+              <input id="equipmentId" class="required-field" type="text" />
+            </div>
+
+            <div class="field">
+              <label for="equipmentType">
+                Equipment Type <span class="required">*</span>
+              </label>
+              <div class="multi-dropdown" data-name="equipmentType">
+                <button
+                  type="button"
+                  class="multi-dropdown-toggle"
+                  data-placeholder="-"
+                >
+                  -
+                </button>
+                <div class="multi-dropdown-menu">
+                  <label
+                    ><input type="checkbox" value="Centrifugal Pump" />
+                    Centrifugal Pump</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      value="Positive Displacement Pump"
+                    />
+                    Positive Displacement Pump</label
+                  >
+                  <label
+                    ><input type="checkbox" value="Mag-Drive" />
+                    Mag-Drive</label
+                  >
+                </div>
+                <input
+                  type="hidden"
+                  id="equipmentType"
+                  name="equipmentType"
+                  class="required-field"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="equipmentReference">Equipment Reference</label>
+              <input id="equipmentReference" type="text" />
+            </div>
+
+            <div class="field">
+              <label for="department">Department</label>
+              <input id="department" type="text" />
+            </div>
+          </div>
+
+          <div class="form-grid form-grid-2">
+            <div class="field">
+              <label for="pipingDiagram"
+                >Piping and Instrumentation Diagram</label
+              >
+              <input id="pipingDiagram" type="text" />
+            </div>
+            <div class="field">
+              <label for="tankId">Tank ID</label>
+              <input id="tankId" type="text" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <header
+          class="card-header collapsible-header"
+          data-target="#processSection"
+        >
+          <span class="card-title">
+            Process Information | Process properties, including product
+            composition and hydraulic system requirements
+          </span>
+          <button
+            type="button"
+            class="collapse-icon"
+            aria-label="Toggle Process Information"
+          >
+            ▾
+          </button>
+        </header>
+        <div class="card-body" id="processSection">
+          <div class="form-grid form-grid-1">
+            <div class="field">
+              <label for="product">Product</label>
+              <input id="product" type="text" />
+            </div>
+          </div>
+
+          <div class="process-section">
+            <div class="field-group-title">Chemical Makeup</div>
+            <div class="form-grid form-grid-2">
+              <div class="field">
+                <label for="constituents">Constituents</label>
+                <input id="constituents" type="text" />
+              </div>
+              <div class="field">
+                <label for="concentration">Concentration (%)</label>
+                <input id="concentration" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="process-section">
+            <div class="field-group-title">Solids by Volume (%)</div>
+            <div class="form-grid form-grid-3">
+              <div class="field">
+                <label for="solidsVolumeMin">Minimum</label>
+                <input id="solidsVolumeMin" type="text" />
+              </div>
+              <div class="field">
+                <label for="solidsVolumeMax">Maximum</label>
+                <input id="solidsVolumeMax" type="text" />
+              </div>
+              <div class="field">
+                <label for="solidsVolumeNormal">Normal</label>
+                <input id="solidsVolumeNormal" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="process-section">
+            <div class="field-group-title">Solids by Weight (%)</div>
+            <div class="form-grid form-grid-3">
+              <div class="field">
+                <label for="solidsWeightMin">Minimum</label>
+                <input id="solidsWeightMin" type="text" />
+              </div>
+              <div class="field">
+                <label for="solidsWeightMax">Maximum</label>
+                <input id="solidsWeightMax" type="text" />
+              </div>
+              <div class="field">
+                <label for="solidsWeightNormal">Normal</label>
+                <input id="solidsWeightNormal" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="process-section">
+            <div class="field-group-title">Dynamic Viscosity (cP)</div>
+            <div class="form-grid form-grid-3">
+              <div class="field">
+                <label for="viscosityMin">Minimum</label>
+                <input id="viscosityMin" type="text" />
+              </div>
+              <div class="field">
+                <label for="viscosityMax">Maximum</label>
+                <input id="viscosityMax" type="text" />
+              </div>
+              <div class="field">
+                <label for="viscosityNormal">Normal</label>
+                <input id="viscosityNormal" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="process-section">
+            <div class="field-group-title">Specific Gravity</div>
+            <div class="form-grid form-grid-3">
+              <div class="field">
+                <label for="sgMin">Minimum</label>
+                <input id="sgMin" type="text" />
+              </div>
+              <div class="field">
+                <label for="sgMax">Maximum</label>
+                <input id="sgMax" type="text" />
+              </div>
+              <div class="field">
+                <label for="sgNormal">Normal</label>
+                <input id="sgNormal" type="text" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-bar" id="statusBar" aria-live="polite"></section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
