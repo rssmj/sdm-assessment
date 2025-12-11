@@ -1,3 +1,5 @@
+GitHub Deployed Site: https://rssmj.github.io/sdm-assessment/
+
 # sdm-assessment
 
 SDM front-end coding exercise.
